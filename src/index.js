@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { TicketingApp } from './components/TicketingApp';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+console.log('you rock')
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <TicketingApp />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
