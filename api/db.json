@@ -1,83 +1,91 @@
 {
-    "events": [
-        {
-            "id": 1,
-            "organizer": 1,
-            "location": "1212 Broadway, Nashville, TN 37216",
-            "event_name": "Book Club with Maggie O'Farrell",
-            "description": "O’Farrell’s “exceptional” award-winning novel captures a Jacobean England haunted by a plague that tragically kills Hamnet, the only son of William Shakespeare. In reimagining the complex relationship between Hamnet’s parents as the 11-year-old’s condition worsens, O’Farrell captures one of the greatest agonies imaginable to a parent. Women’s Prize judge Martha Lane Fox said of the novel, “It expresses something profound about the human experience that seems both extraordinarily current and at the same time, enduring.” This event is part of our online Book Club series, in which The Guardian’s chief books writer, Lisa Allardice, talks to leading writers about their latest novels, creative process and isolation. They will also be answering your questions.",
-            "datetime": "2021-06-28T17:00:00.989Z",
-            "ticket_quantity": 150,
-            "event_type": 1,
-            "refund_policy": "No refunds",
-            "image_url": "https://cdn.theatlantic.com/thumbor/HA6kTaS2bV7cuVYmjglkPlIw_Ns=/720x405/media/img/mt/2019/03/bookfinallead/original.jpg"
-        }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "password": "YES",            
-            "username": "will@will.com",
-            "first_name": "Will",
-            "last_name": "Bishop",
-            "email": "will@will.com",            
-            "date_joined": "2020-08-28T14:51:39.989Z"         
-        },
-        {
-            "id": 2,
-            "password": "YES",            
-            "username": "fox@fox.com",
-            "first_name": "Fox",
-            "last_name": "Mulder",
-            "email": "fox@fox.com",            
-            "date_joined": "2020-08-28T14:51:39.989Z"          
-        },
-        {
-            "id": 3,
-            "password": "YES",            
-            "username": "dana@dana.com",
-            "first_name": "Dana",
-            "last_name": "Scully",
-            "email": "dana@dana.com",            
-            "date_joined": "2020-08-28T14:51:39.989Z"          
-        }
-    ],
-    "eventtypes": [
-        {
-            "id": 1,
-            "event_type": "Book Club"
-        },
-        {
-            "id": 2,
-            "event_type": "Concert"
-        },
-        {
-            "id": 3,
-            "event_type": "Food & Drink"
-        },
-        {
-            "id": 4,
-            "event_type": "Charity"
-        },
-        {
-            "id": 5,
-            "event_type": "Fitness"
-        }
-    ],
-    "tickets": [
-        {
-            "id": 1,
-            "event": 1,
-            "attendee": 2,
-            "order_number": 916534212,
-            "purchase_datetime": "2021-04-13T17:00:00.989Z"
-        },
-        {
-            "id": 2,
-            "event": 1,
-            "attendee": 3,
-            "order_number": 916534213,
-            "purchase_datetime": "2021-04-14T17:00:00.989Z"
-        }
-    ]
+  "events": [
+    {
+      "id": 1,
+      "organizer": 1,
+      "location": "1212 Broadway, Nashville, TN 37216",
+      "event_name": "Book Club with Maggie O'Farrell",
+      "description": "O’Farrell’s “exceptional” award-winning novel captures a Jacobean England haunted by a plague that tragically kills Hamnet, the only son of William Shakespeare. In reimagining the complex relationship between Hamnet’s parents as the 11-year-old’s condition worsens, O’Farrell captures one of the greatest agonies imaginable to a parent. Women’s Prize judge Martha Lane Fox said of the novel, “It expresses something profound about the human experience that seems both extraordinarily current and at the same time, enduring.” This event is part of our online Book Club series, in which The Guardian’s chief books writer, Lisa Allardice, talks to leading writers about their latest novels, creative process and isolation. They will also be answering your questions.",
+      "datetime": "2021-06-28T17:00:00.989Z",
+      "ticket_quantity": 150,
+      "event_type": 1,
+      "refund_policy": "No refunds",
+      "image_url": "https://cdn.theatlantic.com/thumbor/HA6kTaS2bV7cuVYmjglkPlIw_Ns=/720x405/media/img/mt/2019/03/bookfinallead/original.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "password": "YES",
+      "username": "will@will.com",
+      "first_name": "Will",
+      "last_name": "Bishop",
+      "email": "will@will.com",
+      "date_joined": "2020-08-28T14:51:39.989Z"
+    },
+    {
+      "id": 2,
+      "password": "YES",
+      "username": "fox@fox.com",
+      "first_name": "Fox",
+      "last_name": "Mulder",
+      "email": "fox@fox.com",
+      "date_joined": "2020-08-28T14:51:39.989Z"
+    },
+    {
+      "id": 3,
+      "password": "YES",
+      "username": "dana@dana.com",
+      "first_name": "Dana",
+      "last_name": "Scully",
+      "email": "dana@dana.com",
+      "date_joined": "2020-08-28T14:51:39.989Z"
+    },
+    {
+      "email": "alex@alex.com",
+      "username": "alex@alex.com",
+      "password": "YES",
+      "firstName": "Alex",
+      "lastName": "Krycek",
+      "id": 4
+    }
+  ],
+  "eventtypes": [
+    {
+      "id": 1,
+      "event_type": "Book Club"
+    },
+    {
+      "id": 2,
+      "event_type": "Concert"
+    },
+    {
+      "id": 3,
+      "event_type": "Food & Drink"
+    },
+    {
+      "id": 4,
+      "event_type": "Charity"
+    },
+    {
+      "id": 5,
+      "event_type": "Fitness"
+    }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "event": 1,
+      "attendee": 2,
+      "order_number": 916534212,
+      "purchase_datetime": "2021-04-13T17:00:00.989Z"
+    },
+    {
+      "id": 2,
+      "event": 1,
+      "attendee": 3,
+      "order_number": 916534213,
+      "purchase_datetime": "2021-04-14T17:00:00.989Z"
+    }
+  ]
 }

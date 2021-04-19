@@ -8,7 +8,7 @@ export const Login = props => {
     const passwordDialog = useRef()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/users?username=${username}`)
+        return fetch(`http://localhost:8088/users?username=${username.current.value}`)
             .then(r => r.json())
             .then(user => user.length ? user[0] : false)
     }
@@ -28,7 +28,7 @@ export const Login = props => {
                 }
             })
     }
-    console.log(username)
+    
 
     return (
         <main className="container--login">
