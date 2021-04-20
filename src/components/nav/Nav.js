@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,6 +13,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddIcon from '@material-ui/icons/Add';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {EventContext} from '../events/EventProvider'
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -79,6 +80,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const SearchNavBar = props => {
+    const { searchTerms, setTerms } = useContext(EventContext)
+    console.log(searchTerms)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -182,6 +185,9 @@ export const SearchNavBar = props => {
                 input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                onChange={(e) => 
+                    setTerms(e.target.value)
+                }
             />
             </div>
             <div className={classes.grow} />

@@ -4,12 +4,19 @@ export const EventContext = React.createContext()
 
 export const EventProvider = props => {
     const [events, setEvents] = useState([])
+    const [homePageEvents, setHPEvents] = useState([])
     const [singleEvent, setSingleEvent] = useState({})
+    const [searchTerms, setTerms] = useState("")
 
-    const getEvents = () => {
+    const getHPEvents = () => {
         return fetch("http://localhost:8088/events")
             .then(res => res.json())
-            .then(setEvents)
+            .then((events) => {
+                const otherUsersEvents = events.filter(e => 
+                    e.organizer !== parseInt(localStorage.getItem("ticketing_user"))
+                )
+                setHPEvents(otherUsersEvents)
+            })
     }
 
     const createEvent = event => {
@@ -26,7 +33,7 @@ export const EventProvider = props => {
         return fetch(`http://localhost:8088/events/${id}`, {
             method: "DELETE"
         })
-        .then(getEvents)
+        .then(getHPEvents)
     }
 
     const editEvent = (id, event) => {
@@ -37,7 +44,7 @@ export const EventProvider = props => {
             },
             body: JSON.stringify(event)
         })
-        .then(getEvents)
+        .then(getHPEvents)
     }
 
     const getSingleEvent = id => {
@@ -50,8 +57,9 @@ export const EventProvider = props => {
         <EventContext.Provider value={
             {
                 events, singleEvent, setEvents, 
-                getEvents, createEvent, deleteEvent,
-                editEvent, getSingleEvent
+                getHPEvents, createEvent, deleteEvent,
+                editEvent, getSingleEvent, 
+                searchTerms, setTerms, homePageEvents
             }
         }>
             {props.children}
