@@ -5,7 +5,7 @@ import {EventCard} from './EventCard'
 export const EventList = (props) => {
     const {homePageEvents, getHPEvents, searchTerms} = useContext(EventContext)
     const [searchedEvents, setSearchedEvents] = useState([])
-    console.log(searchTerms)
+
     useEffect(() => {
         getHPEvents()
     }, [])
@@ -18,8 +18,11 @@ export const EventList = (props) => {
         } else {
             setSearchedEvents(homePageEvents)
         }
-        console.log('yes')
     }, [searchTerms])
+
+    useEffect(() => {
+        setSearchedEvents(homePageEvents)
+    }, [homePageEvents])
 
 
     return (
