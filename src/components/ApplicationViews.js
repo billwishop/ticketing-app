@@ -5,6 +5,7 @@ import { EventProvider } from './events/EventProvider';
 import { SearchNavBar } from '../components/nav/Nav'
 import { EventDetails } from './events/EventDetails';
 import { CartProvider } from './cart/CartProvider';
+import { Cart } from './cart/Cart';
 
 export const ApplicationViews = props => {
     return (
@@ -18,7 +19,9 @@ export const ApplicationViews = props => {
                     <Route exact path="/" render={
                         props => <EventList {...props} />
                     } />
-                    
+                    <Route exact path="/cart" render={
+                        props => <Cart {...props} />
+                    } />
                 </CartProvider>
             </EventProvider>
         </>
