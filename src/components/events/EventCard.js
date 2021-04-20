@@ -20,11 +20,15 @@ const useStyles = makeStyles({
 export const EventCard = ({event}) => {
     const history = useHistory();
     const classes = useStyles();
-    
+    console.log(history.location.pathname)
 return (
     <Card className={classes.root}
     onClick={()=> {
-        history.push(`/events/${event.id}`)
+        if (history.location.pathname === '/events') {
+            history.push(`/myevent/${event.id}`)
+        } else {
+            history.push(`/events/${event.id}`)
+        }
     }}>
         <CardActionArea>
         <CardMedia
