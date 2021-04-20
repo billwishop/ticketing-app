@@ -2,26 +2,29 @@ import React, {useContext, useEffect, useState} from 'react'
 import {EventContext} from './EventProvider'
 import {EventCard} from './EventCard'
 
-export const EventList = () => {
-    const {events, getEvents} = useContext(EventContext)
-    const [filteredEvents, setFilteredEvents] = useState([])
-
+export const EventList = (props) => {
+    const {homePageEvents, getHPEvents, searchTerms} = useContext(EventContext)
+    const [searchedEvents, setSearchedEvents] = useState([])
+    console.log(searchTerms)
     useEffect(() => {
-        getEvents()
+        getHPEvents()
     }, [])
 
-    // filter out the logged in user's events for the homepage
+
     useEffect(() => {
-        const otherUsersEvents = events.filter(e => 
-            e.organizer !== parseInt(localStorage.getItem("ticketing_user"))
-        )
-        setFilteredEvents(otherUsersEvents)
-    }, [events])
+        if (searchTerms !== "") {
+            const subset = homePageEvents.filter(event => event.event_name.toLowerCase().includes(searchTerms.toLowerCase()) )
+            setSearchedEvents(subset)
+        } else {
+            setSearchedEvents(homePageEvents)
+        }
+        console.log('yes')
+    }, [searchTerms])
 
 
     return (
         <>
-        {filteredEvents.map((e) => {
+        {searchedEvents.map((e) => {
             return <EventCard key={e.id} event={e} />
         })}
         </>
