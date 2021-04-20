@@ -12,9 +12,35 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { TicketContext } from '../tickets/TicketProvider';
 
 export const Cart = props => {
     const {cart, setCart, setCartLength} = useContext(CartContext)
+    const {createTicket} = useContext(TicketContext)
+
+    const clearCart = () => {
+        setCart([])
+        setCartLength(0)
+    }
+
+    const handleCheckout = () => {
+        cart.forEach(item => {
+            var i
+            for (i=0;; i++) {
+                let ticket = {
+                    event: item.event,
+                    attendee: parseInt(localStorage.getItem("ticketing_user"))
+                }
+                createTicket(ticket)
+                if (i === item.number_of_tickets - 1) {
+                    clearCart()
+                    break
+                }
+                
+            }
+            
+        })
+    }
 
     return (
         <div className="cart">
@@ -39,6 +65,8 @@ export const Cart = props => {
                 <Button  onClick={evt => {
                             evt.preventDefault()
                             console.log('post order and tickets')
+                            handleCheckout()
+                            props.history.push("tickets")
                         }} color="primary">
                 Checkout
                 </Button> 
