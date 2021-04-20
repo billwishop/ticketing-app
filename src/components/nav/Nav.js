@@ -16,6 +16,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {EventContext} from '../events/EventProvider'
 import {CartContext} from '../cart/CartProvider'
 
+
 const useStyles = makeStyles((theme) => ({
     grow: {
     flexGrow: 1,
@@ -130,8 +131,12 @@ export const SearchNavBar = props => {
         open={isMenuOpen}
         onClose={handleMenuClose}
     >
-        <MenuItem onClick={handleMenuClose}>My Events</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My Tickets</MenuItem>
+        <MenuItem onClick={()=>{
+            handleMenuClose() 
+            props.history.push("events")}}>My Events</MenuItem>
+        <MenuItem onClick={()=>{
+            handleMenuClose() 
+            props.history.push("tickets")}}>My Tickets</MenuItem>
     </Menu>
     );
 
@@ -185,6 +190,7 @@ export const SearchNavBar = props => {
                 variant="h6" noWrap>
                 ticketing
             </Typography>
+            {props.location.pathname === '/' &&
             <div className={classes.search}>
             <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -200,7 +206,7 @@ export const SearchNavBar = props => {
                     setTerms(e.target.value)
                 }
             />
-            </div>
+            </div>}
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
             <IconButton color="inherit"

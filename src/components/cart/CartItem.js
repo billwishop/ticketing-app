@@ -17,8 +17,6 @@ const useStyles = makeStyles({
 
 export const CartItem = ({item}) => {
     const classes = useStyles();
-    console.log(item)
-    console.log('hello from cartItem')
 return (
     <Card className={classes.root}>
         <CardActionArea>
