@@ -30,7 +30,7 @@ return (
         <CardMedia
             className={classes.media}
             image={event.image_url}
-            title="Contemplative Reptile"
+            title={event.event_name}
         />
         <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
