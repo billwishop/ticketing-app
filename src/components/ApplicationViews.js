@@ -8,6 +8,7 @@ import { CartProvider } from './cart/CartProvider';
 import { Cart } from './cart/Cart';
 import { TicketProvider } from './tickets/TicketProvider';
 import { TicketList } from './tickets/TicketList';
+import { CreatorEventList } from './events/CreatorEventList';
 
 export const ApplicationViews = props => {
     return (
@@ -19,6 +20,9 @@ export const ApplicationViews = props => {
                             props => <EventDetails {...props} />
                         } />
                         <Route render={props => <SearchNavBar {...props} />} />
+                        <Route exact path="/events" render={
+                            props => <CreatorEventList {...props} />
+                        } />
                         <Route exact path="/" render={
                             props => <EventList {...props} />
                         } />                    

@@ -5,6 +5,7 @@ export const EventContext = React.createContext()
 export const EventProvider = props => {
     const [events, setEvents] = useState([])
     const [homePageEvents, setHPEvents] = useState([])
+    const [usersEvents, setUsersEvents] = useState([])
     const [singleEvent, setSingleEvent] = useState({})
     const [searchTerms, setTerms] = useState("")
 
@@ -16,6 +17,17 @@ export const EventProvider = props => {
                     e.organizer !== parseInt(localStorage.getItem("ticketing_user"))
                 )
                 setHPEvents(otherUsersEvents)
+            })
+    }
+
+    const getUsersEvents = () => {
+        return fetch("http://localhost:8088/events")
+            .then(res => res.json())
+            .then((events) => {
+                const loggedInUserEvents = events.filter(e => 
+                    e.organizer === parseInt(localStorage.getItem("ticketing_user"))
+                )
+                setUsersEvents(loggedInUserEvents)
             })
     }
 
@@ -59,7 +71,8 @@ export const EventProvider = props => {
                 events, singleEvent, setEvents, 
                 getHPEvents, createEvent, deleteEvent,
                 editEvent, getSingleEvent, 
-                searchTerms, setTerms, homePageEvents
+                searchTerms, setTerms, homePageEvents,
+                getUsersEvents, usersEvents, setUsersEvents
             }
         }>
             {props.children}
