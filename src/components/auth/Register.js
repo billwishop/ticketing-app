@@ -32,8 +32,8 @@ export const Register = props => {
                                 email: email.current.value,
                                 username: username.current.value,
                                 password: password.current.value,
-                                firstName: firstName.current.value,
-                                lastName: lastName.current.value
+                                first_name: firstName.current.value,
+                                last_name: lastName.current.value
                             })
                         })
                             .then(r => r.json())

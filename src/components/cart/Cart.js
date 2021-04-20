@@ -44,7 +44,7 @@ export const Cart = props => {
 
     return (
         <div className="cart">
-            <Dialog open={true} aria-labelledby="form-dialog-title" disableBackdropClick disableEscapeKeyDown>
+            <Dialog open={true} aria-labelledby="form-dialog-title" onClose={() => {props.history.push("/")}}>
                 <DialogTitle id="form-dialog-title">Order Summary</DialogTitle>
                 <DialogContent>
                 <DialogContentText>
@@ -64,7 +64,6 @@ export const Cart = props => {
                 </Button> 
                 <Button  onClick={evt => {
                             evt.preventDefault()
-                            console.log('post order and tickets')
                             handleCheckout()
                             props.history.push("tickets")
                         }} color="primary">

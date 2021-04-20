@@ -47,9 +47,6 @@ export const EventDetails = props => {
         getSingleEvent(parseInt(props.match.params.event_id))
     }, [])
 
-    console.log({ticketCount})
-    console.log('cart', cart)
-
     return (
         <>
         <Dialog open={open} aria-labelledby="form-dialog-title" onClose={() => {props.history.push("/")}}>

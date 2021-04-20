@@ -6,7 +6,7 @@ export const TicketProvider = props => {
     const [tickets, setTickets] = useState([])
 
     const getTickets = () => {
-        return fetch("http://localhost:8088/tickets")
+        return fetch("http://localhost:8088/tickets/?_expand=event&_expand=user")
             .then(r => r.json())
             .then(setTickets)
     }

@@ -7,6 +7,7 @@ import { EventDetails } from './events/EventDetails';
 import { CartProvider } from './cart/CartProvider';
 import { Cart } from './cart/Cart';
 import { TicketProvider } from './tickets/TicketProvider';
+import { TicketList } from './tickets/TicketList';
 
 export const ApplicationViews = props => {
     return (
@@ -23,6 +24,9 @@ export const ApplicationViews = props => {
                         } />                    
                         <Route exact path="/cart" render={
                             props => <Cart {...props} />
+                        } />
+                        <Route exact path="/tickets" render={
+                            props => <TicketList {...props} />
                         } />
                     </TicketProvider>
                 </CartProvider>

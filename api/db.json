@@ -9,7 +9,7 @@
       "date": "May 25, 2021",
       "time": "7:00pm CST",
       "ticket_quantity": 150,
-      "event_type": 1,
+      "event_typeId": 1,
       "refund_policy": "No refunds",
       "image_url": "https://cdn.theatlantic.com/thumbor/HA6kTaS2bV7cuVYmjglkPlIw_Ns=/720x405/media/img/mt/2019/03/bookfinallead/original.jpg"
     },
@@ -22,7 +22,7 @@
       "date": "June 25, 2021",
       "time": "9:00am CST",
       "ticket_quantity": 150,
-      "event_type": 1,
+      "event_typeId": 1,
       "refund_policy": "No refunds",
       "image_url": "https://www.planetfitness.com/sites/default/files/feature-image/xbreak-workout_602724.jpg.pagespeed.ic.mQ6q_WDrRM.webp"
     }
@@ -59,8 +59,8 @@
       "email": "alex@alex.com",
       "username": "alex@alex.com",
       "password": "YES",
-      "firstName": "Alex",
-      "lastName": "Krycek",
+      "first_name": "Alex",
+      "last_name": "Krycek",
       "id": 4
     }
   ],
@@ -93,33 +93,38 @@
   "tickets": [
     {
       "id": 1,
-      "event": 1,
-      "attendee": 2
+      "eventId": 1,
+      "userId": 2
     },
     {
       "id": 2,
-      "event": 1,
-      "attendee": 3
+      "eventId": 1,
+      "userId": 3
     },
     {
-      "event": 1,
-      "attendee": 4,
+      "eventId": 1,
+      "userId": 4,
       "id": 3
     },
     {
-      "event": 2,
-      "attendee": 4,
+      "eventId": 2,
+      "userId": 4,
       "id": 4
     },
     {
-      "event": 1,
-      "attendee": 4,
+      "eventId": 1,
+      "userId": 4,
       "id": 5
     },
     {
-      "event": 2,
-      "attendee": 4,
+      "eventId": 2,
+      "userId": 4,
       "id": 6
+    },
+    {
+      "eventId": 1,
+      "userId": 4,
+      "id": 7
     }
   ]
 }
