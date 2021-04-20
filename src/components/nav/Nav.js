@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +14,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import AddIcon from '@material-ui/icons/Add';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {EventContext} from '../events/EventProvider'
+import {CartContext} from '../cart/CartProvider'
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -81,12 +82,26 @@ const useStyles = makeStyles((theme) => ({
 
 export const SearchNavBar = props => {
     const { searchTerms, setTerms } = useContext(EventContext)
-    console.log(searchTerms)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-    const [invisible, setVisible] = React.useState(true)
-    const [cartLength, setCartLength] = React.useState(0)
+    const [invisible, setVisible] = React.useState(false)
+    const {cart, setCart, cartLength, setCartLength} = useContext(CartContext)
+
+    useEffect(() => {
+        if (cart.length > 0) {
+        let sum = 0
+        for (const item of cart){
+            sum += item['number_of_tickets']
+            console.log('item',item.number_of_tickets)
+        }
+        setCartLength(sum)
+        console.log('YES', sum)
+    }
+    })
+
+    console.log('cart from nav', cart)
+    console.log('cartLength from nav', cartLength)
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
