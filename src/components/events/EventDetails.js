@@ -36,6 +36,7 @@ export const EventDetails = props => {
         const addition = {
             id: cart.length + 1,
             event: singleEvent.id,
+            event_name: singleEvent.event_name,
             number_of_tickets: ticketCount
         }
         cart.push(addition)

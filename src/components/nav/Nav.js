@@ -93,15 +93,11 @@ export const SearchNavBar = props => {
         let sum = 0
         for (const item of cart){
             sum += item['number_of_tickets']
-            console.log('item',item.number_of_tickets)
         }
         setCartLength(sum)
-        console.log('YES', sum)
     }
     })
 
-    console.log('cart from nav', cart)
-    console.log('cartLength from nav', cartLength)
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
