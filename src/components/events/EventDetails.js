@@ -12,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import { CartContext } from '../cart/CartProvider';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -25,16 +26,28 @@ const useStyles = makeStyles((theme) => ({
 
 export const EventDetails = props => {
     const classes = useStyles();
+    const {cart, setCart} = useContext(CartContext)
     const {getSingleEvent, singleEvent} = useContext(EventContext)
     const {soldOut, setSoldOut} = useState(false)
     const [open, setOpen] = useState(true)
     const [ticketCount, setTicketCount] = useState(1)
+
+    const addToCart = () => {
+        const addition = {
+            id: cart.length + 1,
+            event: singleEvent.id,
+            number_of_tickets: ticketCount
+        }
+        cart.push(addition)
+        setCart(cart)
+    }
 
     useEffect(() => {
         getSingleEvent(parseInt(props.match.params.event_id))
     }, [])
 
     console.log({ticketCount})
+    console.log('cart', cart)
 
     return (
         <>
@@ -75,6 +88,8 @@ export const EventDetails = props => {
         </FormControl>
         <Button  onClick={evt => {
                     evt.preventDefault()
+                    addToCart()
+                    props.history.push("/")
                 }} color="primary">
         Add to Cart
         </Button> 

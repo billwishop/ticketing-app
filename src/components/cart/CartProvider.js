@@ -1,3 +1,21 @@
-// make context with state variables that contain cart information
-// number of tickets added for what event
-// [{event: event_id, number_of_tickets: 3}]
+import React, {useState} from 'react'
+
+export const CartContext = React.createContext()
+
+export const CartProvider = props => {
+    const [cart, setCart] = useState([])
+    const [cartLength, setCartLength] = useState(0)
+
+    return (
+        <CartContext.Provider value={
+            {
+                cart, setCart, cartLength, setCartLength
+            }
+        }>
+            {props.children}
+        </CartContext.Provider>
+    )
+}
+
+
+
