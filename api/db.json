@@ -25,6 +25,19 @@
       "event_typeId": 1,
       "refund_policy": "No refunds",
       "image_url": "https://www.planetfitness.com/sites/default/files/feature-image/xbreak-workout_602724.jpg.pagespeed.ic.mQ6q_WDrRM.webp"
+    },
+    {
+      "organizer": 2,
+      "location": "1234 Fatherland St, Nashville, TN 37216",
+      "event_name": "Make You Own Mini Cakes",
+      "description": "Join me and learn how to make those simple and yet delicious mini cakes for Mother's Day. The perfect way to celebrate the most important person in your life!  Get your free ticket to receive the recipe and Amazon's shopping list in your inbox a few days before the event.",
+      "date": "2021-07-02T00:14:00.000Z",
+      "time": "2021-04-20T17:30:35.036Z",
+      "ticket_quantity": "100",
+      "event_typeId": 3,
+      "refund_policy": "Refunds Allowed",
+      "image_url": "https://www.lifeloveandsugar.com/wp-content/uploads/2014/08/Best-Moist-Chocolate-Cake4.jpg",
+      "id": 4
     }
   ],
   "users": [
@@ -86,8 +99,12 @@
       "event_type": "Fitness"
     },
     {
-      "id": 5,
+      "id": 6,
       "event_type": "Poetry"
+    },
+    {
+      "id": 7,
+      "event_type": "Other"
     }
   ],
   "tickets": [

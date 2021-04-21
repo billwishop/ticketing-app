@@ -133,10 +133,10 @@ export const SearchNavBar = props => {
     >
         <MenuItem onClick={()=>{
             handleMenuClose() 
-            props.history.push("events")}}>My Events</MenuItem>
+            props.history.push("/events")}}>My Events</MenuItem>
         <MenuItem onClick={()=>{
             handleMenuClose() 
-            props.history.push("tickets")}}>My Tickets</MenuItem>
+            props.history.push("/tickets")}}>My Tickets</MenuItem>
     </Menu>
     );
 

@@ -8,6 +8,7 @@ export const EventProvider = props => {
     const [usersEvents, setUsersEvents] = useState([])
     const [singleEvent, setSingleEvent] = useState({})
     const [searchTerms, setTerms] = useState("")
+    const [eventTypes, setEventTypes] = useState([])
 
     const getHPEvents = () => {
         return fetch("http://localhost:8088/events")
@@ -65,14 +66,21 @@ export const EventProvider = props => {
             .then(setSingleEvent)
     }
 
+    const getEventTypes = () => {
+        return fetch('http://localhost:8088/eventtypes')
+            .then(r => r.json())
+            .then(setEventTypes)
+    }
+
     return (
         <EventContext.Provider value={
             {
                 events, singleEvent, setEvents, 
                 getHPEvents, createEvent, deleteEvent,
-                editEvent, getSingleEvent, 
+                editEvent, getSingleEvent, setSingleEvent,
                 searchTerms, setTerms, homePageEvents,
-                getUsersEvents, usersEvents, setUsersEvents
+                getUsersEvents, usersEvents, setUsersEvents,
+                eventTypes, getEventTypes
             }
         }>
             {props.children}
