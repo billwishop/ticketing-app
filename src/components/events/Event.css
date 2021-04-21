@@ -3,6 +3,10 @@
     max-height: 100%;
 }
 
+.event--select {
+    margin-top: 10px;
+}
+
 /* .event--container {
     min-height: 30vh;
     min-width: 185vh;

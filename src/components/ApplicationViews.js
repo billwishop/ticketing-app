@@ -9,6 +9,7 @@ import { Cart } from './cart/Cart';
 import { TicketProvider } from './tickets/TicketProvider';
 import { TicketList } from './tickets/TicketList';
 import { CreatorEventList } from './events/CreatorEventList';
+import { EventForm } from './events/EventForm';
 
 export const ApplicationViews = props => {
     return (
@@ -31,6 +32,12 @@ export const ApplicationViews = props => {
                         } />
                         <Route exact path="/tickets" render={
                             props => <TicketList {...props} />
+                        } />
+                        <Route exact path="/create" render={
+                            props => <EventForm {...props} />
+                        } />
+                        <Route exact path="/edit/:event_id(\d+)" render={
+                            props => <EventForm {...props} />
                         } />
                     </TicketProvider>
                 </CartProvider>
