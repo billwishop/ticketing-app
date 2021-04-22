@@ -18,7 +18,7 @@ import {
 } from '@material-ui/pickers';
 
 export const EventForm = props => {
-    const {singleEvent, getSingleEvent, editEvent, 
+    const {singleEvent, editEvent, 
             eventTypes, createEvent, setSingleEvent, getEventTypes} = useContext(EventContext)
 
     const [open, setOpen] = useState(true)
@@ -50,16 +50,23 @@ export const EventForm = props => {
 
     useEffect(() => {
         getEventTypes()
+    }, [])
+    
+    useEffect(() => {
         if (editMode) {
-            getSingleEvent(parseInt(props.match.params.event_id))
+            setSelectedDate(singleEvent.date)
+            setSelectedTime(singleEvent.time)
         }
+    }, [])
+
+    useEffect(() => {
+        setEvent(singleEvent)
     }, [])
 
     const handleControlledInputChange = e => {
         const newEvent = Object.assign({}, event)
         newEvent[e.target.name] = e.target.value
         setEvent(newEvent)
-        console.log(e)
     }
 
     const constructEvent = () => {
@@ -72,7 +79,7 @@ export const EventForm = props => {
                 description: event.description,
                 date: event.date,
                 time: event.time,
-                ticket_quantity: event.ticket_quantity,
+                ticket_quantity: parseInt(event.ticket_quantity),
                 event_typeId: event.event_typeId,
                 refund_policy: event.refund_policy,
                 image_url: event.image_url
@@ -85,7 +92,7 @@ export const EventForm = props => {
                 description: event.description,
                 date: selectedDate,
                 time: selectedTime,
-                ticket_quantity: event.ticket_quantity,
+                ticket_quantity: parseInt(event.ticket_quantity),
                 event_typeId: event.event_typeId,
                 refund_policy: event.refund_policy,
                 image_url: event.image_url
@@ -93,13 +100,11 @@ export const EventForm = props => {
         }
     }
 
-
-    console.log({editMode})
-    console.log(editMode ?singleEvent.location : "")
-
     return (
         <div className="event--form">
-            <Dialog open={open} onClose={()=>setOpen(!open)} aria-labelledby="form-dialog-title" disableBackdropClick disableEscapeKeyDown>
+            <Dialog open={open} onClose={()=>setOpen(!open)} 
+                key={singleEvent.id} disableBackdropClick disableEscapeKeyDown
+                aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">{editMode ? "Update Event" : "Add Event"}</DialogTitle>
                 <DialogContent>
                 <TextField
@@ -142,9 +147,11 @@ export const EventForm = props => {
                             margin="normal"
                             id="date-picker-inline"
                             label="Date picker inline"
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                            KeyboardButtonProps={{
+                            value={editMode ?singleEvent.date :selectedDate}
+                            onChange={(e) => {
+                                handleDateChange(e)
+                                singleEvent['date'] = e
+                            }}                            KeyboardButtonProps={{
                                 'aria-label': 'change date',
                             }}
                         />
@@ -152,8 +159,11 @@ export const EventForm = props => {
                             margin="normal"
                             id="time-picker"
                             label="Time picker"
-                            value={selectedTime}
-                            onChange={handleTimeChange}
+                            value={editMode ?singleEvent.time :selectedTime}
+                            onChange={(e) => {
+                                handleTimeChange(e)
+                                singleEvent['time'] = e
+                            }}
                             KeyboardButtonProps={{
                                 'aria-label': 'change time',
                             }}
@@ -181,12 +191,13 @@ export const EventForm = props => {
                     onChange={handleControlledInputChange}
                 />
                 <div className="event--select">
-                    <InputLabel id="event--select--label">Select Tenant</InputLabel>
+                    <InputLabel id="event--select--label">Select Event Type</InputLabel>
                     <Select
                     labelId="event--select--label"
                     id="event--select"
                     required={true}
                     onChange={handleControlledInputChange}
+                    defaultValue={editMode ?singleEvent.event_typeId :""}
                     name="event_typeId"
                     >
                     <MenuItem>Select Event Type</MenuItem>

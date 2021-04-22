@@ -49,8 +49,8 @@ export const EventProvider = props => {
         .then(getHPEvents)
     }
 
-    const editEvent = (id, event) => {
-        return fetch(`http://localhost:8088/events/${id}`, {
+    const editEvent = (event) => {
+        return fetch(`http://localhost:8088/events/${event.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
